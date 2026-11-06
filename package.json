@@ -1,8 +1,8 @@
 {
-  "name": "ban-bus-simulation",
-  "version": "8.0.0",
+  "name": "city-drive-bn",
+  "version": "9.0.0",
   "private": true,
-  "description": "BAN Bus Simulation: a 3D Bangladesh driving game (PWA). By Tasmon Islam.",
+  "description": "City Drive BN: a 3D Bangladesh driving game (PWA). By Tasmon Islam.",
   "license": "MIT",
   "author": "Tasmon Islam",
   "scripts": {

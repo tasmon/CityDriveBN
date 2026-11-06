@@ -1,26 +1,41 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>BAN Bus Simulation</title>
+<title>City Drive BN</title>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0f1b2d">
 <link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
-<meta property="og:title" content="BAN Bus Simulation"><meta property="og:type" content="website"><meta name="description" content="BAN Bus Simulation by Tasmon Islam: drive a city bus, pick up passengers, refuel and avoid fines.">
-<link rel="stylesheet" href="css/style.css?v=8"></head><body>
+<meta property="og:title" content="City Drive BN"><meta property="og:type" content="website"><meta name="description" content="City Drive BN by Tasmon Islam: drive buses, cars and CNG autos through Bangladeshi cities, highways and scenic routes.">
+<link rel="stylesheet" href="css/style.css?v=9"></head><body>
 <canvas id="c"></canvas>
 <div id="flash"></div><div id="wp"></div>
 <canvas id="mm" width="150" height="150"></canvas>
 <div id="clk" class="pill">⏰ <b id="wx"></b></div>
 <div id="top"><div class="pill" id="fp">⛽<div class="bar"><i id="fb" style="background:#f59e0b"></i></div><small id="fl"></small></div><div class="pill"><span id="moi">🪙</span><b id="mo"></b></div><div class="pill" id="rg" hidden>😡<div class="bar"><i id="rb" style="background:#ef4444"></i></div></div><div class="pill">❤<div class="bar"><i id="hb" style="background:var(--ac)"></i></div><small id="lv"></small></div></div>
 <div id="msg" class="pill"></div><div id="toasts"></div>
-<div id="tr"><button class="rb b" data-k="horn" aria-label="Horn">📣</button><button class="rb" id="bp" aria-label="Pause">⏸</button><button class="rb" id="bmore" aria-label="More buttons">⋯</button></div><div id="kh" class="pill">W/↑ accelerate · S/↓ brake & reverse · A/D or ←/→ change lane · H horn · P pause</div>
+<div id="tr"><button class="rb b" data-k="horn" aria-label="Horn">📣</button><button class="rb" id="bp" aria-label="Pause">⏸</button><button class="rb" id="bmore" aria-label="More buttons">⋯</button></div><div id="kh" class="pill">W/↑ accelerate · S/↓ brake & reverse · A/D or ←/→ change lane · N radio · T auto-drive</div>
 <div id="lc" class="col"><button class="rb" id="bq" aria-label="Help">❓</button><button class="rb" id="bv" aria-label="Camera distance">🔄</button><button class="rb" id="bf" aria-label="Find fuel station">⛽</button><button class="rb on" id="bk" aria-label="Engine key">🔑</button><button class="rb" id="bh" aria-label="Hazard lights">⚠️</button></div>
-<div id="rc" class="col"><button class="rb" id="bc" aria-label="Cockpit view">🎥</button><button class="rb" id="bl" aria-label="Headlights">💡</button><button class="rb" id="bs" aria-label="Sound">📻</button><button class="rb" id="bg" aria-label="Gear">D</button><button class="rb" id="bm" aria-label="Map">🗺</button></div>
+<div id="rc" class="col"><button class="rb" id="bc" aria-label="Cockpit view">🎥</button><button class="rb" id="bl" aria-label="Headlights">💡</button><button class="rb" id="bs" aria-label="Sound">📻</button><button class="rb" id="bg" aria-label="Gear">D</button><button class="rb" id="bm" aria-label="Map">🗺</button><button class="rb" id="bauto" aria-label="Auto-drive">🤖</button></div>
 <div id="spd"><div id="sp"></div></div><div id="lim">50</div>
 <div id="steer"><button class="rb big b" data-k="left" aria-label="Steer left">«</button><button class="rb big b" data-k="right" aria-label="Steer right">»</button></div>
 <div id="pedals"><button class="ped brk b" data-k="down" aria-label="Brake"></button><button class="ped gas b" data-k="up" aria-label="Accelerator"></button></div>
 <div id="fm" hidden><canvas id="fc" width="700" height="700"></canvas></div>
 <div id="dash"><div id="wl"></div></div>
-<div id="ov" class="ov"><div class="p card"><h1 id="ot">BAN Bus Simulation</h1><div id="ob"></div><div id="menu"></div><div id="gar" hidden><div id="cs"></div><div id="sel"></div><div id="cwrap"><div class="lbl">Bus colour</div><div id="colr"></div></div></div>
-<div class="btns"><button id="gb">Garage</button><button id="qh">❓ How to play</button><button class="go" id="go" hidden>Start</button><button id="mq" hidden>Menu</button><button id="inst" hidden>Install app</button></div></div></div>
-<script>(function(){function L(s,ok,bad){var e=document.createElement('script');e.src=s;e.onload=ok;e.onerror=bad;document.head.appendChild(e)}function go(){L('js/game.js?v=8')}L('vendor/three.min.js',go,function(){L('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',go,go)})})()</script></body></html>
+<div id="home" hidden>
+<header class="hbar"><div class="logo"><span>CITY DRIVE</span><em>BN</em></div><div class="hcoin">🪙 <b id="hcoin">৳0</b></div></header>
+<section id="tPlay" class="tab on"><div class="hero"><h1>Explore Bangladesh<br>behind the wheel</h1><p id="hsub"></p><div class="cta"><button id="hplay" class="big">▶ Quick play</button><button id="hhelp" class="hg">How to play</button></div></div><div class="modes" id="hmodes"></div></section>
+<section id="tGarage" class="tab"><h2>Garage</h2><div class="cars" id="hcars"></div><div class="lbl">Colour</div><div id="colr"></div><div class="lbl">City</div><div id="cs"></div></section>
+<section id="tSet" class="tab"><h2>Settings</h2>
+<div class="srow"><label for="svol">Master volume</label><input id="svol" type="range" min="0" max="1" step=".05" value="1"></div>
+<div class="srow"><label for="mvol">Music volume</label><input id="mvol" type="range" min="0" max="1" step=".05" value=".7"></div>
+<div class="srow"><label for="qsel">Graphics</label><select id="qsel"><option value="a">Auto</option><option value="h">High</option><option value="l">Low (faster)</option></select></div>
+<div class="srow"><label>Sound</label><button id="smute" class="hg">🔊 On</button></div>
+<div class="srow"><label>Your music</label><label class="hg rfl">🎵 Choose audio files…<input id="rfile2" type="file" accept="audio/*" multiple hidden></label></div>
+<div class="srow"><button id="inst" hidden class="hg">⬇ Install app</button></div>
+<p class="sub">City Drive BN · developed by Tasmon Islam</p></section>
+<nav class="hnav"><button data-t="tPlay" class="on">▶ Play</button><button data-t="tGarage">🚘 Garage</button><button data-t="tSet">⚙ Settings</button></nav>
+<div id="dsheet" class="sheet" hidden><div class="sc"><h3 id="dtitle">Drive to…</h3><div id="dlist" class="modes"></div><button id="dclose" class="hg">Close</button></div></div>
+</div>
+<div id="radio" class="p" hidden><div class="rt"><b id="rtn">📻 Radio</b><button id="rx" aria-label="Close radio">✕</button></div><div id="rlist"></div><div class="rctl"><button id="rprev" aria-label="Previous">⏮</button><button id="rplay" aria-label="Play or pause">▶</button><button id="rnext" aria-label="Next">⏭</button><input id="rvol" type="range" min="0" max="1" step=".05" value=".7" aria-label="Music volume"></div><label class="rfl">🎵 Play my music…<input id="rfile" type="file" accept="audio/*" multiple hidden></label></div>
+<div id="ov" class="ov" hidden><div class="p card"><h1 id="ot">City Drive BN</h1><div id="ob"></div><div class="btns"><button class="go" id="go" hidden>Start</button><button id="mq" hidden>Menu</button></div></div></div>
+<script>(function(){function L(s,ok,bad){var e=document.createElement('script');e.src=s;e.onload=ok;e.onerror=bad;document.head.appendChild(e)}function go(){L('js/game.js?v=9')}L('vendor/three.min.js',go,function(){L('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',go,go)})})()</script></body></html>
